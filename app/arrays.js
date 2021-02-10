@@ -4,7 +4,18 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
-}
+    let ph = arr[0];
+    for (let i = 0; i < arr.length; i++){
+        arr[i] = arr[i + 1]
+           
+        }
+        arr[arr.length - 1] = ph
+        
+        return arr
+    }
+
+    
+
 
 
 // ------------------------------------------
@@ -16,6 +27,31 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let dupes = {
+        
+    }
+    let largeNum = 0
+    let dupesExist = false;
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] == largeNum && largeNum != 0){
+            largeNum = arr[i]
+            if(dupes.hasOwnProperty(largeNum)){
+                dupes[arr[i]]++
+            }else{
+                dupes[arr[i]] = 2
+            }
+            dupesExist = true
+        }
+        if(arr[i] > largeNum){
+         largeNum = arr[i]
+        }
+
+    }
+    if(dupesExist == true){
+        return dupes
+    }else{
+        return largeNum
+    }
 }
 
 
@@ -28,9 +64,11 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    for(i = 0; i < arr.length; i++){
+        arr[i] = arr[i]*arr.length
+    }
+    return arr
 }
-
-
 // ------------------------------------------
 
 
@@ -62,7 +100,15 @@ let flights = [{
 
 
 function flightCost(destination, firstClass) {
-    //***hint: use the find method***
+    for(let i = 0; i < flights.length; i++){
+        if(flights[i].to == destination.toUpperCase()){
+            if(firstClass == true){
+                return flights[i].prices['firstClass']
+            }else{
+                return flights[i].prices['standard']
+            }
+        }
+    }
 
 }
 
@@ -84,7 +130,15 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
-
+let nope = {
+    error: 'No user with that ID'
+}
+    for(let i = 0; i < staff.length; i++){
+    if(staff[i].id == id){
+        return staff[i]
+    }
+}
+return nope
 }
 
 
